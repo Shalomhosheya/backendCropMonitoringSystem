@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 @Service
@@ -31,5 +32,10 @@ public class FieldServicesimpl implements FieldService {
         if (saveField==null){
             System.out.println("null value");
         }
+    }
+
+    @Override
+    public List<FieldDTO> getAllFields() {
+        return fieldmapping.asFieldDTOList(fieldDAO.findAll());
     }
 }

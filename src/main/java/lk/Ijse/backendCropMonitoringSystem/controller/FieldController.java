@@ -10,16 +10,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.zip.DataFormatException;
 
 @RestController
 @RequestMapping("api/v1/field")
+@CrossOrigin(origins = "http://localhost:63342")
 public class FieldController {
   @Autowired
   private FieldService fieldService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "save")
     public ResponseEntity<Void>saveField(
       @RequestPart("fieldName")String fieldName,
       @RequestPart("fieldloc")String fieldLoc,
@@ -56,4 +57,9 @@ public class FieldController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 }
+
+    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<FieldDTO>getAllFields(){
+        return fieldService.getAllFields();
+    }
 }

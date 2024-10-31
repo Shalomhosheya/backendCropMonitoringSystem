@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class FieldEntity implements SuperEntity {
     @Id
     private String fieldID;
+    private String fieldName;
     private String fieldLocation;
     private String fieldSize;
     private String staff;
