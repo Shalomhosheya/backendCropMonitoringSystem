@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.zip.DataFormatException;
 
 @Service
@@ -37,5 +38,31 @@ public class FieldServicesimpl implements FieldService {
     @Override
     public List<FieldDTO> getAllFields() {
         return fieldmapping.asFieldDTOList(fieldDAO.findAll());
+    }
+
+    @Override
+    public void deleteField(String fieldID) {
+         Optional<FieldEntity>field=fieldDAO.findById(fieldID);
+        if (!field.isPresent()) {
+            System.out.println("not found");
+        }else {
+            fieldDAO.deleteById(fieldID);
+        }
+    }
+
+    @Override
+    public void updateFile(String fieldID, FieldDTO fieldDTO) {
+        Optional<FieldEntity> findField=fieldDAO.findById(fieldID);
+        if (!findField.isPresent()){
+            System.out.println("no content");
+        }else {
+            findField.get().setFieldName(fieldDTO.getFieldName());
+            findField.get().setFieldLocation(fieldDTO.getFieldLocation());
+            findField.get().setFieldSize(fieldDTO.getFieldSize());
+            findField.get().setStaff(fieldDTO.getStaff());
+            findField.get().setPicture(fieldDTO.getPicture());
+            findField.get().setPicture2(fieldDTO.getPicture2());
+        }
+
     }
 }

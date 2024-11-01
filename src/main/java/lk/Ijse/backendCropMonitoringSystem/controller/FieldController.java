@@ -1,6 +1,7 @@
 package lk.Ijse.backendCropMonitoringSystem.controller;
 
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.FieldDTO;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.FieldEntity;
 import lk.Ijse.backendCropMonitoringSystem.service.FieldService;
 import lk.Ijse.backendCropMonitoringSystem.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,16 @@ public class FieldController {
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public List<FieldDTO>getAllFields(){
         return fieldService.getAllFields();
+    }
+
+    @DeleteMapping(value = "/{fieldID}")
+   public ResponseEntity<Void>deleteField(@PathVariable("fieldID")String fieldID){
+        fieldService.deleteField(fieldID);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping(value = "/{fieldID}")
+    public ResponseEntity<FieldEntity> updateField(@PathVariable("fieldID")String fieldID,@RequestBody FieldDTO fieldDTO){
+        fieldService.updateFile(fieldID,fieldDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
