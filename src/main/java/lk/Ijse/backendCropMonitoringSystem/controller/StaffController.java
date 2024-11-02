@@ -5,7 +5,9 @@ import lk.Ijse.backendCropMonitoringSystem.exception.DataPersistException;
 import lk.Ijse.backendCropMonitoringSystem.service.StaffService;
 import lk.Ijse.backendCropMonitoringSystem.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +20,17 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
-    @PostMapping
+    @PostMapping(value = "/save",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void>saveStaff(
-            @RequestPart()String firstname,
-            @RequestPart()String lastname,
-            @RequestPart()String designation,
-            @RequestPart()String gender,
-            @RequestPart() Date joinDate,
-            @RequestPart() Date DOB,
-            @RequestPart() String role,
-            @RequestPart() String field,
-            @RequestPart() String vehicle
+            @RequestPart("firstName")String firstname,
+            @RequestPart("lastName")String lastname,
+            @RequestPart("designation")String designation,
+            @RequestPart("gender")String gender,
+            @RequestPart("joinDate")@DateTimeFormat(pattern = "yyyy-MM-dd") Date joinDate,
+            @RequestPart("DOB")@DateTimeFormat(pattern = "yyyy-MM-dd") Date DOB,
+            @RequestPart("role") String role,
+            @RequestPart("field") String field,
+            @RequestPart("vehicle") String vehicle
                                          ){
 
         try {
