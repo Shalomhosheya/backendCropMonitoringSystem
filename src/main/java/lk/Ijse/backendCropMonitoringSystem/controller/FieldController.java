@@ -2,8 +2,10 @@ package lk.Ijse.backendCropMonitoringSystem.controller;
 
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.FieldDTO;
 import lk.Ijse.backendCropMonitoringSystem.entity.impl.FieldEntity;
+import lk.Ijse.backendCropMonitoringSystem.exception.DataPersistException;
 import lk.Ijse.backendCropMonitoringSystem.service.FieldService;
 import lk.Ijse.backendCropMonitoringSystem.util.AppUtil;
+import lk.Ijse.backendCropMonitoringSystem.util.RegexProcess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,9 +55,12 @@ public class FieldController {
             fieldService.savesField(fieldDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
 
-        }catch (Exception e){
+        }catch (DataPersistException e){
             e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+          e.printStackTrace();
+          return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 }
 
@@ -66,6 +71,10 @@ public class FieldController {
 
     @DeleteMapping(value = "/{fieldID}")
    public ResponseEntity<Void>deleteField(@PathVariable("fieldID")String fieldID){
+      /* if (!RegexProcess.fieldIDMatcher(fieldID)){
+           System.out.println("regex error");
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       }*/
         fieldService.deleteField(fieldID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

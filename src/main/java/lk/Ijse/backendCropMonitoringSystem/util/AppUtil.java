@@ -7,6 +7,9 @@ public class AppUtil {
     public static String generateFieldID(){
      return "Field"+ UUID.randomUUID();
     }
+    public static String generateStaffID(){
+     return "Staff"+ UUID.randomUUID();
+    }
     public static String profilePicToBase64(byte [] profilePic){
         return Base64.getEncoder().encodeToString(profilePic);
     }
