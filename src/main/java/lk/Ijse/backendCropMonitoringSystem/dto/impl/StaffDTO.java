@@ -16,12 +16,17 @@ public class StaffDTO {
     private String LastName;
     private String designation;
     private String gender;
+    private  String address_1;
+    private  String address_2;
+    private  String address_3;
+    private  String address_4;
+    private  String address_5;
 
     private Date joinDate;
     private Date DOB;
+    private String contactNum;
     private String role;
+    private String email;
     private String field;
-    private String vehicle;
-
 
 }

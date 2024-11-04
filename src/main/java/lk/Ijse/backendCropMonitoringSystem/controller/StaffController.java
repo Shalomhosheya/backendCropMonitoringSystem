@@ -11,7 +11,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 @RestController
 @RequestMapping("api/v1/staff")
@@ -20,40 +26,60 @@ public class StaffController {
     @Autowired
     private StaffService staffService;
 
-    @PostMapping(value = "/save",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void>saveStaff(
-            @RequestPart("firstName")String firstname,
-            @RequestPart("lastName")String lastname,
-            @RequestPart("designation")String designation,
-            @RequestPart("gender")String gender,
-            @RequestPart("joinDate")@DateTimeFormat(pattern = "yyyy-MM-dd") Date joinDate,
-            @RequestPart("DOB")@DateTimeFormat(pattern = "yyyy-MM-dd") Date DOB,
+    @PostMapping(value = "/save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> saveStaff(
+            @RequestPart("firstName") String firstName,
+            @RequestPart("lastName") String lastName,
+            @RequestPart("designation") String designation,
+            @RequestPart("gender") String gender,
+            @RequestPart("address1") String address1,
+            @RequestPart("address2") String address2,
+            @RequestPart("address3") String address3,
+            @RequestPart("address4") String address4,
+            @RequestPart("address5") String address5,
+            @RequestPart("joinDate") String joinDateStr, // Accept date as string
+            @RequestPart("DOB") String dobStr, // Accept date as string
             @RequestPart("role") String role,
-            @RequestPart("field") String field,
-            @RequestPart("vehicle") String vehicle
-                                         ){
+            @RequestPart("email") String email,
+            @RequestPart("contacrnum") String contactNum,
+            @RequestPart("field") String field)
+           {
 
         try {
+            // Parse dates
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date joinDate = dateFormat.parse(joinDateStr);
+            Date dob = dateFormat.parse(dobStr);
 
+            // Populate DTO
             String staffId = AppUtil.generateStaffID();
             StaffDTO staffDTO = new StaffDTO();
             staffDTO.setStaffID(staffId);
-            staffDTO.setFirstName(firstname);
-            staffDTO.setLastName(lastname);
+            staffDTO.setFirstName(firstName);
+            staffDTO.setLastName(lastName);
             staffDTO.setDesignation(designation);
             staffDTO.setGender(gender);
+            staffDTO.setAddress_1(address1);
+            staffDTO.setAddress_2(address2);
+            staffDTO.setAddress_3(address3);
+            staffDTO.setAddress_4(address4);
+            staffDTO.setAddress_5(address5);
             staffDTO.setJoinDate(joinDate);
-            staffDTO.setDOB(DOB);
+            staffDTO.setDOB(dob);
             staffDTO.setRole(role);
+            staffDTO.setContactNum(contactNum);
+            staffDTO.setEmail(email);
             staffDTO.setField(field);
-            staffDTO.setVehicle(vehicle);
 
             staffService.savestaff(staffDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (DataPersistException e){
+        } catch (ParseException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
+        } catch (DataPersistException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
