@@ -17,6 +17,7 @@ import java.util.Date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 
 @RestController
@@ -83,6 +84,10 @@ public class StaffController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<StaffDTO> getAllData(){
+        return staffService.getAllStaffFields();
     }
 
 }

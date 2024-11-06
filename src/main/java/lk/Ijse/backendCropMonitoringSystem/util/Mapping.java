@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -26,6 +25,10 @@ public class Mapping {
 
     public List<FieldDTO> asFieldDTOList(List<FieldEntity> fieldEntities) {
       return mapper.map(fieldEntities,new TypeToken<List<FieldDTO>>(){}.getType());
+     }
+
+     public List<StaffDTO>asStaffDTOList(List<StaffEntity>staffEntities){
+        return mapper.map(staffEntities,new TypeToken<List<StaffDTO>>(){}.getType());
      }
 
 }

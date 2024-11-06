@@ -10,6 +10,8 @@ import lk.Ijse.backendCropMonitoringSystem.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class StaffServiceImpl implements StaffService {
@@ -27,4 +29,11 @@ public class StaffServiceImpl implements StaffService {
             System.out.println("savestaff entity is null");
         }
     }
+
+    @Override
+    public List<StaffDTO> getAllStaffFields() {
+        return staffMapping.asStaffDTOList(staffDAO.findAll());
+    }
+
+
 }
