@@ -95,7 +95,7 @@ public class StaffController {
          staffService.deleteData(staffID);
        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @PutMapping(value = "/{staffID}")
+    @PutMapping(value = "/{staffID}",consumes = "application/json")
     public ResponseEntity<Void>updateStaff(@PathVariable("staffID")String staffId,@RequestBody StaffDTO staffDTO){
         staffService.updateStaff(staffId,staffDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

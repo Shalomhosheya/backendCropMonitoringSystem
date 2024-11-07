@@ -67,7 +67,6 @@ public class StaffServiceImpl implements StaffService {
             staffEntity.get().setEmail(staffDTO.getEmail());
             staffEntity.get().setRole(staffDTO.getRole());
             staffEntity.get().setField(staffDTO.getField());
-
         }
     }
 
