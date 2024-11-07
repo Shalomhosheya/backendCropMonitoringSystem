@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/staff")
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin
 public class StaffController {
     @Autowired
     private StaffService staffService;
@@ -88,6 +88,17 @@ public class StaffController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<StaffDTO> getAllData(){
         return staffService.getAllStaffFields();
+    }
+
+    @DeleteMapping(value = "/{staffID}")
+    public ResponseEntity<Void>delete(@PathVariable("staffID")String staffID){
+         staffService.deleteData(staffID);
+       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping(value = "/{staffID}")
+    public ResponseEntity<Void>updateStaff(@PathVariable("staffID")String staffId,@RequestBody StaffDTO staffDTO){
+        staffService.updateStaff(staffId,staffDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

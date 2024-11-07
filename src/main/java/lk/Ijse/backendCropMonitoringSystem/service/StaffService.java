@@ -9,4 +9,8 @@ public interface StaffService {
     void savestaff(StaffDTO staffDTO);
 
     List<StaffDTO> getAllStaffFields();
+
+    void deleteData(String staffID);
+
+    void updateStaff(String staffId, StaffDTO staffDTO);
 }
