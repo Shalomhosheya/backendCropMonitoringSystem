@@ -22,4 +22,7 @@ public class VehicleEntity {
     @ManyToOne()
     @JoinColumn(name = "staffId",nullable = false)
     private StaffEntity staffID;
+
+    public void setStaffID(String staffID) {
+    }
 }

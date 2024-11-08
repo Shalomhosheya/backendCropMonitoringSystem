@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/vehicle")
@@ -48,6 +49,38 @@ public class VehicleController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
+    public List<VehicleDTO>getAllData(){
+        return vehicleService.getAllData();
+    }
+    @DeleteMapping(value = "/{vehicleID}")
+    public ResponseEntity<Void>deleteData(@PathVariable("vehicleID")String v_ID){
+
+        vehicleService.deleteData(v_ID);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping(value = "/{vehicleID}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> updateData(
+            @PathVariable("vehicleID") String v_id,
+            @RequestPart("vehicleCategory") String vehicleCategory,
+            @RequestPart("fuelType") String fuelType,
+            @RequestPart("remarks") String remarks,
+            @RequestPart("status") String status,
+            @RequestPart("licenseNumberPlate") String licenseNumberPlate,
+            @RequestPart("staffID") String staffID
+    ) {
+        VehicleDTO vehicleDTO = new VehicleDTO();
+        vehicleDTO.setVehicleCategory(vehicleCategory);
+        vehicleDTO.setFuelType(fuelType);
+        vehicleDTO.setRemarks(remarks);
+        vehicleDTO.setStatus(status);
+        vehicleDTO.setLicenseNumberPlate(licenseNumberPlate);
+        vehicleDTO.setStaffID(staffID);
+
+        vehicleService.updateData(v_id, vehicleDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
