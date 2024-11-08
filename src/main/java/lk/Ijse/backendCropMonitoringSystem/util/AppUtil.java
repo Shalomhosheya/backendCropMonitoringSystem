@@ -16,4 +16,7 @@ public class AppUtil {
     public static String generateVehicleID(){
         return "Vehicle"+UUID.randomUUID();
     }
+    public static String generateEquipmentID(){
+        return "Equipment"+UUID.randomUUID();
+    }
 }

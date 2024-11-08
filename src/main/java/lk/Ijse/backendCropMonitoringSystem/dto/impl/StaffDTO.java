@@ -1,5 +1,6 @@
 package lk.Ijse.backendCropMonitoringSystem.dto.impl;
 
+import lk.Ijse.backendCropMonitoringSystem.dto.StaffStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StaffDTO {
+public class StaffDTO implements StaffStatus {
     private String staffID;
     private String firstName;
     private String LastName;
