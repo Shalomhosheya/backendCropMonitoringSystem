@@ -1,9 +1,6 @@
 package lk.Ijse.backendCropMonitoringSystem.entity.impl;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.Ijse.backendCropMonitoringSystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +24,7 @@ public class FieldEntity implements SuperEntity {
 
     @Column(columnDefinition = "LONGTEXT")
     private String picture2;
+
+    @OneToOne(mappedBy = "field",cascade = CascadeType.ALL)
+    private EquipmentEntity equipmentEntity;
 }

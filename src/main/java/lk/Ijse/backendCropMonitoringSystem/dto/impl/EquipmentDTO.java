@@ -9,4 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class EquipmentDTO implements VehicleStatus {
+    private String equip_id;
+    private String name;
+    private String type;
+    private String status;
+    private String staffID;
+    private String fieldID;
 }

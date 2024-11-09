@@ -1,9 +1,6 @@
 package lk.Ijse.backendCropMonitoringSystem.entity.impl;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.Ijse.backendCropMonitoringSystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,4 +36,6 @@ public class StaffEntity implements SuperEntity {
     @OneToMany(mappedBy = "staffID")
     private List<VehicleEntity>vehicleEntities;
 
+    @OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)
+    private EquipmentEntity equipmentEntity;
 }
