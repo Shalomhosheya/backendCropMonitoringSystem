@@ -1,8 +1,10 @@
 package lk.Ijse.backendCropMonitoringSystem.util;
 
+import lk.Ijse.backendCropMonitoringSystem.dto.impl.EquipmentDTO;
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.FieldDTO;
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.StaffDTO;
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.VehicleDTO;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.EquipmentEntity;
 import lk.Ijse.backendCropMonitoringSystem.entity.impl.FieldEntity;
 import lk.Ijse.backendCropMonitoringSystem.entity.impl.StaffEntity;
 import lk.Ijse.backendCropMonitoringSystem.entity.impl.VehicleEntity;
@@ -29,6 +31,9 @@ public class Mapping {
         return mapper.map(vehicleDTO,VehicleEntity.class);
      }
 
+    public EquipmentEntity toEquipEntity(EquipmentDTO equipmentDTO) {
+        return mapper.map(equipmentDTO, EquipmentEntity.class);
+    }
     public List<FieldDTO> asFieldDTOList(List<FieldEntity> fieldEntities) {
       return mapper.map(fieldEntities,new TypeToken<List<FieldDTO>>(){}.getType());
      }
@@ -40,4 +45,5 @@ public class Mapping {
      public List<VehicleDTO>asVehicleDTOList(List<VehicleEntity>vehicleEntities){
         return mapper.map(vehicleEntities,new TypeToken<List<VehicleDTO>>(){}.getType());
      }
+
 }

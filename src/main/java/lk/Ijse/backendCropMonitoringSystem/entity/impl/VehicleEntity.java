@@ -19,10 +19,12 @@ public class VehicleEntity {
     private String status;
     private String licenseNumberPlate;
 
-    @ManyToOne()
-    @JoinColumn(name = "staffId",nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staff_Id",nullable = false)
     private StaffEntity staffID;
 
+
     public void setStaffID(String staffID) {
+
     }
 }
