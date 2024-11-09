@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class EquipmentServiceimpl implements EquipmentService {
@@ -27,5 +29,10 @@ public class EquipmentServiceimpl implements EquipmentService {
         if (equipmentEntity == null) {
             System.out.println("equipEntity is null");
         }
+    }
+
+    @Override
+    public List<EquipmentDTO> getallData() {
+        return equip_mapper.asEquipDTOList(equipmentDAO.findAll());
     }
 }

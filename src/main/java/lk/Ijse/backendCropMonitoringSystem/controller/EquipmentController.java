@@ -1,13 +1,17 @@
 package lk.Ijse.backendCropMonitoringSystem.controller;
 
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.EquipmentDTO;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.EquipmentEntity;
 import lk.Ijse.backendCropMonitoringSystem.exception.DataPersistException;
 import lk.Ijse.backendCropMonitoringSystem.service.EquipmentService;
 import lk.Ijse.backendCropMonitoringSystem.util.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/equipment")
@@ -41,5 +45,9 @@ public class EquipmentController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    private List<EquipmentDTO>getAllData(){
+        return equipmentService.getallData();
     }
 }
