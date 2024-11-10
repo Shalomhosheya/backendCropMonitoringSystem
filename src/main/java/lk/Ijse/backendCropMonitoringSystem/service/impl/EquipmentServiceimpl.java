@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,5 +35,30 @@ public class EquipmentServiceimpl implements EquipmentService {
     @Override
     public List<EquipmentDTO> getallData() {
         return equip_mapper.asEquipDTOList(equipmentDAO.findAll());
+    }
+
+    @Override
+    public void deleteData(String equipId) {
+        Optional<EquipmentEntity>equipmentEntity=equipmentDAO.findById(equipId);
+        if (!equipmentEntity.isPresent()) {
+            System.out.println("equipment Entity is not present");
+        }
+        else {
+            equipmentDAO.deleteById(equipId);
+        }
+    }
+
+    @Override
+    public void updateData(String equipId, EquipmentDTO equipmentDTO) {
+        Optional<EquipmentEntity>equipmentEntity =equipmentDAO.findById(equipId);
+        if (!equipmentEntity.isPresent()) {
+            System.out.println("equipment entity is null");
+        }else {
+            equipmentEntity.get().setType(equipmentDTO.getType());
+            equipmentEntity.get().setName(equipmentDTO.getName());
+            equipmentEntity.get().setStatus(equipmentDTO.getStatus());
+            equipmentEntity.get().setField(equipmentDTO.getFieldID());
+            equipmentEntity.get().setStaff(equipmentDTO.getStaffID());
+        }
     }
 }

@@ -50,4 +50,16 @@ public class EquipmentController {
     private List<EquipmentDTO>getAllData(){
         return equipmentService.getallData();
     }
+
+    @DeleteMapping(value = "/{equip_id}")
+    private ResponseEntity<Void>deleteData(@PathVariable("equip_id")String equip_id){
+        equipmentService.deleteData(equip_id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping(value = "/{equip_id}")
+    private ResponseEntity<Void>updateData(@PathVariable("equip_id")String equip_id,@RequestBody EquipmentDTO equipmentDTO){
+        equipmentService.updateData(equip_id,equipmentDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

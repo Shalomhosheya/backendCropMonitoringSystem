@@ -24,4 +24,9 @@ public class EquipmentEntity {
     @JoinColumn(name = "field_ID",referencedColumnName = "fieldID")
     private FieldEntity field;
 
+    public void setStaff(String staffID) {
+    }
+
+    public void setField(String fieldID) {
+    }
 }
