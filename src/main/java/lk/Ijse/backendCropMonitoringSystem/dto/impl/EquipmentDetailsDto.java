@@ -1,4 +1,6 @@
 package lk.Ijse.backendCropMonitoringSystem.dto.impl;
 
-public class EquipmentDetailsDto {
+import lk.Ijse.backendCropMonitoringSystem.dto.EquipmentDetailsStatus;
+
+public class EquipmentDetailsDto implements EquipmentDetailsStatus {
 }

@@ -1,6 +1,7 @@
 package lk.Ijse.backendCropMonitoringSystem.entity.impl;
 
 import jakarta.persistence.*;
+import lk.Ijse.backendCropMonitoringSystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Table(name = "Vehicle")
-public class VehicleEntity {
+public class VehicleEntity implements SuperEntity {
     @Id
     private String vehicleID;
     private String vehicleCategory;
