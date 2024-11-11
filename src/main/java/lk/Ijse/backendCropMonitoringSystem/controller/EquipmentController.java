@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/equipment")
+@CrossOrigin
 public class EquipmentController {
     @Autowired
     private EquipmentService equipmentService;
@@ -22,9 +23,7 @@ public class EquipmentController {
     public ResponseEntity<Void>saveEquipment(
             @RequestPart("name")String name,
             @RequestPart("type")String type,
-            @RequestPart("status")String status,
-            @RequestPart("staffID")String staffID,
-            @RequestPart("fieldID")String fieldID
+            @RequestPart("status")String status
             ){
         try {
 
@@ -34,8 +33,6 @@ public class EquipmentController {
             equipmentDTO.setName(name);
             equipmentDTO.setType(type);
             equipmentDTO.setStatus(status);
-            equipmentDTO.setStaffID(staffID);
-            equipmentDTO.setFieldID(fieldID);
             equipmentService.saveEquipment(equipmentDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){

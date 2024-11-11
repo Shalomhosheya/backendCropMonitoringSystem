@@ -1,17 +1,16 @@
 package lk.Ijse.backendCropMonitoringSystem.controller;
 
-import lk.Ijse.backendCropMonitoringSystem.dao.EquipmentDetailsDAO;
-import lk.Ijse.backendCropMonitoringSystem.service.EquipmentDetailsService;
+import lk.Ijse.backendCropMonitoringSystem.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/vi/equip_details")
+@RequestMapping("api/v1/reservstion")
 @CrossOrigin
-public class EquipmentDetailsController {
+public class ReservationController {
+ @Autowired
+ private ReservationService reservationService;
 
-    @Autowired
-    private EquipmentDetailsService equipmentDetailsService;
 }

@@ -26,8 +26,7 @@ public class VehicleController {
             @RequestPart("fuelType")String fuelType,
             @RequestPart("remarks")String remarks,
             @RequestPart("status")String status,
-            @RequestPart("licenseNumberPlate")String licenseNumberPlate,
-            @RequestPart("staffID")String staffID
+            @RequestPart("licenseNumberPlate")String licenseNumberPlate
     ){
         try {
 
@@ -39,7 +38,6 @@ public class VehicleController {
             vehicleDTO.setRemarks(remarks);
             vehicleDTO.setStatus(status);
             vehicleDTO.setLicenseNumberPlate(licenseNumberPlate);
-            vehicleDTO.setStaffID(staffID);
             vehicleService.saveVehicle(vehicleDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (DataPersistException d){
@@ -68,16 +66,13 @@ public class VehicleController {
             @RequestPart("fuelType") String fuelType,
             @RequestPart("remarks") String remarks,
             @RequestPart("status") String status,
-            @RequestPart("licenseNumberPlate") String licenseNumberPlate,
-            @RequestPart("staffID") String staffID
+            @RequestPart("licenseNumberPlate") String licenseNumberPlate
     ) {
         VehicleDTO vehicleDTO = new VehicleDTO();
         vehicleDTO.setVehicleCategory(vehicleCategory);
         vehicleDTO.setFuelType(fuelType);
         vehicleDTO.setRemarks(remarks);
         vehicleDTO.setStatus(status);
-        vehicleDTO.setLicenseNumberPlate(licenseNumberPlate);
-        vehicleDTO.setStaffID(staffID);
 
         vehicleService.updateData(v_id, vehicleDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

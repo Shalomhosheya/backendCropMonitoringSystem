@@ -33,9 +33,13 @@ public class StaffEntity implements SuperEntity {
     private String email;
     private String field;
 
-    @OneToMany(mappedBy = "staffID")
-    private List<VehicleEntity>vehicleEntities;
 
-    @OneToOne(mappedBy = "staff", cascade = CascadeType.ALL)
-    private EquipmentEntity equipmentEntity;
+    @OneToMany(mappedBy = "staffEntity")
+    private List<EquipmentDetailsEntity>equipmentDetailsEntities;
+
+    @OneToMany(mappedBy = "staffEntity")
+    private List<MonitoringLogEntity>monitoringLogEntities;
+
+    @OneToMany(mappedBy = "staffEntity")
+    private List<ReservationEntity>reservationEntities;
 }

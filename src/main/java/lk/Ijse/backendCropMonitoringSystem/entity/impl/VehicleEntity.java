@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +22,6 @@ public class VehicleEntity implements SuperEntity {
     private String status;
     private String licenseNumberPlate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "staff_Id",nullable = false)
-    private StaffEntity staffID;
-
-
-    public void setStaffID(String staffID) {
-
-    }
+    @OneToMany(mappedBy = "vehicleEntity")
+    private List<ReservationEntity>reservationEntities;
 }

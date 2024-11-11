@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -17,17 +19,8 @@ public class EquipmentEntity implements SuperEntity {
     private String name;
     private String type;
     private String status;
-    @OneToOne
-    @JoinColumn(name = "staff_id", referencedColumnName = "staffID")
-    private StaffEntity staff;
 
-    @OneToOne
-    @JoinColumn(name = "field_ID",referencedColumnName = "fieldID")
-    private FieldEntity field;
+    @OneToMany(mappedBy = "equip_id",cascade = CascadeType.ALL)
+    private List<EquipmentDetailsEntity>equipmentDetailsEntities;
 
-    public void setStaff(String staffID) {
-    }
-
-    public void setField(String fieldID) {
-    }
 }

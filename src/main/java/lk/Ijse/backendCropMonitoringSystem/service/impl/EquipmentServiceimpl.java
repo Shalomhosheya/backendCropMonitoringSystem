@@ -57,8 +57,6 @@ public class EquipmentServiceimpl implements EquipmentService {
             equipmentEntity.get().setType(equipmentDTO.getType());
             equipmentEntity.get().setName(equipmentDTO.getName());
             equipmentEntity.get().setStatus(equipmentDTO.getStatus());
-            equipmentEntity.get().setField(equipmentDTO.getFieldID());
-            equipmentEntity.get().setStaff(equipmentDTO.getStaffID());
         }
     }
 }

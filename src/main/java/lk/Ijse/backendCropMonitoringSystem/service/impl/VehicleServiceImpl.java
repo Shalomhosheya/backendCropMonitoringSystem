@@ -56,7 +56,6 @@ public class VehicleServiceImpl implements VehicleService {
             vehicleEntity.get().setFuelType(vehicleDTO.getFuelType());
             vehicleEntity.get().setRemarks(vehicleDTO.getRemarks());
             vehicleEntity.get().setLicenseNumberPlate(vehicleDTO.getLicenseNumberPlate());
-            vehicleEntity.get().setStaffID(vehicleDTO.getStaffID());
         }
     }
 

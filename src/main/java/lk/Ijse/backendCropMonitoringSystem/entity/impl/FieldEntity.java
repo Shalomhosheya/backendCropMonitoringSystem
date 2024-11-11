@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -25,6 +27,9 @@ public class FieldEntity implements SuperEntity {
     @Column(columnDefinition = "LONGTEXT")
     private String picture2;
 
-    @OneToOne(mappedBy = "field",cascade = CascadeType.ALL)
-    private EquipmentEntity equipmentEntity;
+    @OneToMany(mappedBy = "fieldEntity",cascade = CascadeType.ALL)
+    private List<EquipmentDetailsEntity>equipmentDetailsEntities;
+
+    @OneToMany(mappedBy = "field",cascade = CascadeType.ALL)
+    private List<MonitoringLogEntity>monitoringLogEntities;
 }

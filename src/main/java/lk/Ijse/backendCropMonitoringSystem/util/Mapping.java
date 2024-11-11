@@ -24,7 +24,16 @@ public class Mapping {
      public VehicleEntity toVehicleEntity(VehicleDTO vehicleDTO){
         return mapper.map(vehicleDTO,VehicleEntity.class);
      }
+     public ReservationEntity toReservationEntity(ReservationDTO reservationDTO){
+        return mapper.map(reservationDTO,ReservationEntity.class);
+     }
+     public MonitoringLogEntity tomonitoringLogEntity(MonitoringLogDTO monitoringLogDTO){
+        return mapper.map(monitoringLogDTO,MonitoringLogEntity.class);
+     }
 
+     public CorpseEntity toCorpseEntity(CorpseDTO corpseDTO){
+        return mapper.map(corpseDTO,CorpseEntity.class);
+     }
      public EquipmentDetailsEntity toEquipmentdetailEntity(EquipmentDetailsDto equipmentDetailsDto){
         return mapper.map(equipmentDetailsDto,EquipmentDetailsEntity.class);
      }

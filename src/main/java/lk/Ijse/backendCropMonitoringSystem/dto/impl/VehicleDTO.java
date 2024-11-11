@@ -15,5 +15,4 @@ public class VehicleDTO implements VehicleStatus {
     private String remarks;
     private String status;
     private String licenseNumberPlate;
-    private String staffID;
 }

@@ -10,6 +10,15 @@ public class AppUtil {
     public static String generateEquipmentDetails(){
      return "equip_details"+ UUID.randomUUID();
     }
+    public static String generateReservationID(){
+     return "reservation"+ UUID.randomUUID();
+    }
+    public static String generateCorpseID(){
+     return "crops"+ UUID.randomUUID();
+    }
+    public static String generateMonitoringID(){
+     return "monitoringLog"+ UUID.randomUUID();
+    }
     public static String generateStaffID(){
      return "Staff"+ UUID.randomUUID();
     }
