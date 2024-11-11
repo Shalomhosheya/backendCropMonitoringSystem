@@ -7,6 +7,9 @@ public class AppUtil {
     public static String generateFieldID(){
      return "Field"+ UUID.randomUUID();
     }
+    public static String generateEquipmentDetails(){
+     return "equip_details"+ UUID.randomUUID();
+    }
     public static String generateStaffID(){
      return "Staff"+ UUID.randomUUID();
     }

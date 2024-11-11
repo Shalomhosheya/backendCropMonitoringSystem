@@ -1,13 +1,7 @@
 package lk.Ijse.backendCropMonitoringSystem.util;
 
-import lk.Ijse.backendCropMonitoringSystem.dto.impl.EquipmentDTO;
-import lk.Ijse.backendCropMonitoringSystem.dto.impl.FieldDTO;
-import lk.Ijse.backendCropMonitoringSystem.dto.impl.StaffDTO;
-import lk.Ijse.backendCropMonitoringSystem.dto.impl.VehicleDTO;
-import lk.Ijse.backendCropMonitoringSystem.entity.impl.EquipmentEntity;
-import lk.Ijse.backendCropMonitoringSystem.entity.impl.FieldEntity;
-import lk.Ijse.backendCropMonitoringSystem.entity.impl.StaffEntity;
-import lk.Ijse.backendCropMonitoringSystem.entity.impl.VehicleEntity;
+import lk.Ijse.backendCropMonitoringSystem.dto.impl.*;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +25,9 @@ public class Mapping {
         return mapper.map(vehicleDTO,VehicleEntity.class);
      }
 
+     public EquipmentDetailsEntity toEquipmentdetailEntity(EquipmentDetailsDto equipmentDetailsDto){
+        return mapper.map(equipmentDetailsDto,EquipmentDetailsEntity.class);
+     }
     public EquipmentEntity toEquipEntity(EquipmentDTO equipmentDTO) {
         return mapper.map(equipmentDTO, EquipmentEntity.class);
     }
@@ -46,7 +43,9 @@ public class Mapping {
         return mapper.map(vehicleEntities,new TypeToken<List<VehicleDTO>>(){}.getType());
      }
 
-
+    public List<EquipmentDTO>asEquipDtoList(List<EquipmentDetailsEntity>equipmentDetailsEntities){
+        return  mapper.map(equipmentDetailsEntities,new TypeToken<List<EquipmentDetailsDto>>(){}.getType());
+    }
 
     public List<EquipmentDTO> asEquipDTOList(List<EquipmentEntity>equipmentEntities) {
         return mapper.map(equipmentEntities,new TypeToken<List<EquipmentDTO>>(){}.getType());
