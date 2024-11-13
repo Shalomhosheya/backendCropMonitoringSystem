@@ -27,7 +27,7 @@ public class FieldEntity implements SuperEntity {
     @Column(columnDefinition = "LONGTEXT")
     private String picture2;
 
-    @OneToMany(mappedBy = "fieldEntity",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "field",cascade = CascadeType.ALL)
     private List<EquipmentDetailsEntity>equipmentDetailsEntities;
 
     @OneToMany(mappedBy = "field",cascade = CascadeType.ALL)

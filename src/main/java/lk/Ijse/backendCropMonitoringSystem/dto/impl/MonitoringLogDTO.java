@@ -1,5 +1,11 @@
 package lk.Ijse.backendCropMonitoringSystem.dto.impl;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.CorpseEntity;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.FieldEntity;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.StaffEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +22,6 @@ public class MonitoringLogDTO {
     private String staffID;
     private String fieldID;
     private String corpseID;
+
 
 }

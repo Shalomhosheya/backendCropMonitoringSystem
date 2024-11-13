@@ -20,21 +20,14 @@ public class MonitoringLogEntity {
     private String observed_image;
 
     @ManyToOne
-    @JoinColumn(name = "staff")
-    private StaffEntity staffEntity;
+    @JoinColumn(name = "staffID")
+    private StaffEntity staff;
     @ManyToOne
-    @JoinColumn(name = "field")
+    @JoinColumn(name = "fieldID")
     private FieldEntity field;
     @ManyToOne
-    @JoinColumn(name = "corpse")
-    private CorpseEntity corpesEntity;
+    @JoinColumn(name = "corpseID")
+    private CorpseEntity corpse;
 
-    public void setCorpesEntity(String corpseID) {
-    }
 
-    public void setStaffEntity(String staffID) {
-    }
-
-    public void setField(String fieldID) {
-    }
 }

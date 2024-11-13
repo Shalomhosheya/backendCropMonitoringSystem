@@ -19,14 +19,14 @@ public class EquipmentDetailsEntity implements SuperEntity {
 
     @ManyToOne
     @JoinColumn(name = "equip_id",nullable = false)
-    private EquipmentEntity equipmentEntity;
+    private EquipmentEntity equipment;
 
     @ManyToOne
     @JoinColumn(name = "staffID",nullable = false)
-    private StaffEntity staffEntity;
+    private StaffEntity Staff;
 
     @ManyToOne
     @JoinColumn(name = "fieldID",nullable = false)
-    private FieldEntity fieldEntity;
+    private FieldEntity field;
 
 }

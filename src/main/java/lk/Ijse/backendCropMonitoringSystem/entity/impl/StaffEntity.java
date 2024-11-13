@@ -34,10 +34,10 @@ public class StaffEntity implements SuperEntity {
     private String field;
 
 
-    @OneToMany(mappedBy = "staffEntity")
+    @OneToMany(mappedBy = "Staff")
     private List<EquipmentDetailsEntity>equipmentDetailsEntities;
 
-    @OneToMany(mappedBy = "staffEntity")
+    @OneToMany(mappedBy = "staff")
     private List<MonitoringLogEntity>monitoringLogEntities;
 
     @OneToMany(mappedBy = "staffEntity")

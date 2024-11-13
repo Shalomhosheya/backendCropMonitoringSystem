@@ -32,9 +32,9 @@ public class EquipmentDetailsController {
         equipmentDetailsDto.setEquip_detailsID(id);
         equipmentDetailsDto.setDate(date);
         equipmentDetailsDto.setResone(resone);
-        equipmentDetailsDto.setStaffEntity(staff_id);
-        equipmentDetailsDto.setFieldEntity(fieldID);
-        equipmentDetailsDto.setEquipmentEntity(equip_id);
+        equipmentDetailsDto.setStaffID(staff_id);
+        equipmentDetailsDto.setFieldID(fieldID);
+        equipmentDetailsDto.setEquip_id(equip_id);
 
         // Save the equipment details with equipment entity in service layer
         equipmentDetailsService.saveData(equipmentDetailsDto);

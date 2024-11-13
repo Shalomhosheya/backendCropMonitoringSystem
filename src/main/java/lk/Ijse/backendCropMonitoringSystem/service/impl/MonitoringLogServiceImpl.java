@@ -24,6 +24,7 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
     @Override
     public void saveData(MonitoringLogDTO monitoringLogDTO) {
         monitoringLogDTO.setMonitoringL_id(AppUtil.generateMonitoringID());
+        System.out.println(monitoringMapping.tomonitoringLogEntity(monitoringLogDTO).toString());
         MonitoringLogEntity monitoringLogEntity = monitoringLogDAO.save(monitoringMapping.tomonitoringLogEntity(monitoringLogDTO));
         if (monitoringLogEntity == null) {
             System.out.println("monitoringLogEntity");
@@ -41,11 +42,12 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
         if (!monitoringLogEntity.isPresent()) {
             System.out.println("monitoringLogentity is null");
         }else {
-            monitoringLogEntity.get().setLog_Date(monitoringLogDTO.getLog_Date());
-            monitoringLogEntity.get().setStaffEntity(monitoringLogDTO.getStaffID());
-            monitoringLogEntity.get().setObservation(monitoringLogDTO.getObservation());
-            monitoringLogEntity.get().setField(monitoringLogDTO.getFieldID());
-            monitoringLogEntity.get().setCorpesEntity(monitoringLogDTO.getCorpseID());
+            MonitoringLogEntity update = monitoringMapping.tomonitoringLogEntity(monitoringLogDTO);
+            monitoringLogEntity.get().setLog_Date(update.getLog_Date());
+            monitoringLogEntity.get().setStaff(update.getStaff());
+            monitoringLogEntity.get().setObservation(update.getObservation());
+            monitoringLogEntity.get().setField(update.getField());
+            monitoringLogEntity.get().setCorpse(update.getCorpse());
         }
     }
 

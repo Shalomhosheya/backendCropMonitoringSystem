@@ -27,6 +27,6 @@ public class CorpseEntity implements SuperEntity {
     private String crop_season;
 
 
-    @OneToMany(mappedBy = "corpesEntity")
+    @OneToMany(mappedBy = "corpse")
     private List<MonitoringLogEntity>monitoringLogEntities2;
 }

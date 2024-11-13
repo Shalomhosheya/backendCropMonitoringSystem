@@ -13,7 +13,7 @@ public class EquipmentDetailsDto implements EquipmentDetailsStatus {
     private String equip_detailsID;
     private String date;
     private String resone;
-    private String equipmentEntity;
-    private String staffEntity;
-    private String fieldEntity;
+    private String equip_id;
+    private String staffID;
+    private String fieldID;
 }
