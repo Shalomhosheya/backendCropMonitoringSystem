@@ -16,6 +16,7 @@ public class MonitoringLogEntity {
 
     private String log_Date;
     private String observation;
+    @Column(columnDefinition = "LONGTEXT")
     private String observed_image;
 
     @ManyToOne

@@ -63,4 +63,8 @@ public class Mapping {
     public List<CorpseDTO> asCropsList(List<CorpseEntity>corpseEntities) {
         return mapper.map(corpseEntities,new TypeToken<List<EquipmentDTO>>(){}.getType());
     }
+
+    public List<MonitoringLogDTO> asMonitoringList(List<MonitoringLogEntity> monitoringLogEntities) {
+        return mapper.map(monitoringLogEntities,new TypeToken<List<MonitoringLogDTO>>(){}.getType());
+    }
 }

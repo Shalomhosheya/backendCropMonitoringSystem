@@ -25,6 +25,9 @@ public class AppUtil {
     public static String profilePicToBase64(byte [] profilePic){
         return Base64.getEncoder().encodeToString(profilePic);
     }
+    public static String monitoringPicToBase64(byte [] profilePic){
+        return Base64.getEncoder().encodeToString(profilePic);
+    }
     public static String generateVehicleID(){
         return "Vehicle"+UUID.randomUUID();
     }

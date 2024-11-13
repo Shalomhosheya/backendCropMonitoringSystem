@@ -22,7 +22,7 @@ public class CorpseController {
     private CorpseService corpseService;
 
 
-    @PostMapping(value = "/save", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "save", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> saveCrops(
             @RequestPart("common_name") String common_name,
             @RequestPart("crop_scientific_name") String crop_scientific_name,
