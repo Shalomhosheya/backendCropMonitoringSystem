@@ -78,7 +78,7 @@ public class FieldController {
         fieldService.deleteField(fieldID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @PutMapping(value = "/{fieldID}")
+    @PutMapping(value = "/{fieldID}",produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<FieldEntity> updateField(@PathVariable("fieldID")String fieldID,@RequestBody FieldDTO fieldDTO){
         fieldService.updateFile(fieldID,fieldDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

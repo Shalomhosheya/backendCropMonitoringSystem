@@ -20,7 +20,7 @@ public class EquipmentEntity implements SuperEntity {
     private String type;
     private String status;
 
-    @OneToMany(mappedBy = "equip_id",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipmentEntity",cascade = CascadeType.ALL)
     private List<EquipmentDetailsEntity>equipmentDetailsEntities;
 
 }

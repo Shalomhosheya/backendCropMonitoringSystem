@@ -19,7 +19,7 @@ public class EquipmentDetailsEntity implements SuperEntity {
 
     @ManyToOne
     @JoinColumn(name = "equip_id",nullable = false)
-    private EquipmentEntity equip_id;
+    private EquipmentEntity equipmentEntity;
 
     @ManyToOne
     @JoinColumn(name = "staffID",nullable = false)

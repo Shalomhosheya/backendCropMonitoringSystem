@@ -1,9 +1,6 @@
 package lk.Ijse.backendCropMonitoringSystem.entity.impl;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lk.Ijse.backendCropMonitoringSystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,10 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "corpseEntity")
+@Table(name = "crops")
 public class CorpseEntity implements SuperEntity {
     @Id
     private String corpseID;
+
+    private String common_name;
+    private String crop_scientific_name;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String crop_image;
+
+    private String category;
+    private String crop_season;
+
 
     @OneToMany(mappedBy = "corpesEntity")
     private List<MonitoringLogEntity>monitoringLogEntities2;

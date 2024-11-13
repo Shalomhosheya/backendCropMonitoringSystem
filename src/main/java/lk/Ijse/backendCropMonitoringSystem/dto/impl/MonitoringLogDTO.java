@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class MonitoringLogDTO {
     private String monitoringL_id;
+    private String log_Date;
+    private String observation;
+    private String observed_image;
+
     private String staffID;
     private String fieldID;
     private String corpseID;

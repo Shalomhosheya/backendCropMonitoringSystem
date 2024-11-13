@@ -13,6 +13,11 @@ import lombok.NoArgsConstructor;
 public class MonitoringLogEntity {
     @Id
     private String monitoringL_id;
+
+    private String log_Date;
+    private String observation;
+    private String observed_image;
+
     @ManyToOne
     @JoinColumn(name = "staff")
     private StaffEntity staffEntity;

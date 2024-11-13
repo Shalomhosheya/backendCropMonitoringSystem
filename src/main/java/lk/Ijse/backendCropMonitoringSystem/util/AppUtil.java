@@ -31,4 +31,8 @@ public class AppUtil {
     public static String generateEquipmentID(){
         return "Equipment"+UUID.randomUUID();
     }
+
+    public static String cropPic(byte[] bytesPicture1) {
+        return Base64.getEncoder().encodeToString(bytesPicture1);
+    }
 }
