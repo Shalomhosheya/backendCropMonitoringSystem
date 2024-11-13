@@ -9,4 +9,6 @@ public interface MonitoringLogService {
     void saveData(MonitoringLogDTO monitoringLogDTO);
 
     List<MonitoringLogDTO> getAllData();
+
+    void updateData(String id, MonitoringLogDTO monitoringLogDTO);
 }

@@ -35,5 +35,19 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
         return monitoringMapping.asMonitoringList(monitoringLogDAO.findAll());
     }
 
+    @Override
+    public void updateData(String id, MonitoringLogDTO monitoringLogDTO) {
+        Optional<MonitoringLogEntity>monitoringLogEntity =monitoringLogDAO.findById(id);
+        if (!monitoringLogEntity.isPresent()) {
+            System.out.println("monitoringLogentity is null");
+        }else {
+            monitoringLogEntity.get().setLog_Date(monitoringLogDTO.getLog_Date());
+            monitoringLogEntity.get().setStaffEntity(monitoringLogDTO.getStaffID());
+            monitoringLogEntity.get().setObservation(monitoringLogDTO.getObservation());
+            monitoringLogEntity.get().setField(monitoringLogDTO.getFieldID());
+            monitoringLogEntity.get().setCorpesEntity(monitoringLogDTO.getCorpseID());
+        }
+    }
+
 
 }

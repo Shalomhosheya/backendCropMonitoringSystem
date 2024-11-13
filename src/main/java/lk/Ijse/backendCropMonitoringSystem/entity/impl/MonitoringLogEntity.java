@@ -29,4 +29,12 @@ public class MonitoringLogEntity {
     @JoinColumn(name = "corpse")
     private CorpseEntity corpesEntity;
 
+    public void setCorpesEntity(String corpseID) {
+    }
+
+    public void setStaffEntity(String staffID) {
+    }
+
+    public void setField(String fieldID) {
+    }
 }

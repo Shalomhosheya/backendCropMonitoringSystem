@@ -58,4 +58,9 @@ public class MonitoringLogController {
     private List<MonitoringLogDTO>getAllData(){
        return monitoringLogService.getAllData();
     }
+    @PutMapping(value = "{monitoringL_id}")
+    private ResponseEntity<Void>updateData(@PathVariable("monitoringL_id")String id,@RequestBody MonitoringLogDTO monitoringLogDTO){
+        monitoringLogService.updateData(id,monitoringLogDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
