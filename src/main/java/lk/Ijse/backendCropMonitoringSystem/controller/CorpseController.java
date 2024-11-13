@@ -48,7 +48,7 @@ public class CorpseController {
             corpseService.saveCrops(corpseDTO);
             return ResponseEntity.ok().build();
         } catch (IOException e) {
-            e.printStackTrace(); // Handle exception if the file can't be read
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 

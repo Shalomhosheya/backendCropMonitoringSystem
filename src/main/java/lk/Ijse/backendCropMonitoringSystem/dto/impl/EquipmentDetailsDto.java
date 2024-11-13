@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class EquipmentDetailsDto implements EquipmentDetailsStatus {
 
-    private String equip_details;
+    private String equip_detailsID;
     private String date;
     private String resone;
-    private String staff_id;
-    private String fieldID;
-    private String staffID;
+    private String equipmentEntity;
+    private String staffEntity;
+    private String fieldEntity;
 }

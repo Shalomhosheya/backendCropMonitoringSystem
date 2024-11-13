@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "equipmentDetails")
 public class EquipmentDetailsEntity implements SuperEntity {
     @Id
-    private String equip_details;
+    private String equip_detailsID;
     private String date;
     private String resone;
 
