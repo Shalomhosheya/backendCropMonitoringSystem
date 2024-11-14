@@ -38,24 +38,18 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
 
     @Override
     public void updateData(String id, MonitoringLogDTO monitoringLogDTO) {
-        Optional<MonitoringLogEntity> monitoringLogEntityOpt = monitoringLogDAO.findById(id);
-
-        if (monitoringLogEntityOpt.isPresent()) {
-            MonitoringLogEntity monitoringLogEntity = monitoringLogEntityOpt.get();
-            System.out.println("Entity found: " + monitoringLogEntity);
-
-            // Map the new data to the existing entity
-            monitoringLogEntity.setLog_Date(monitoringLogDTO.getLog_Date());
-            monitoringLogEntity.setStaff(monitoringLogDTO.getStaffID());
-            monitoringLogEntity.setObservation(monitoringLogDTO.getObservation());
-            monitoringLogEntity.setObserved_image(monitoringLogDTO.getObserved_image());
-            monitoringLogEntity.setField(monitoringLogDTO.getFieldID());
-            monitoringLogEntity.setCorpse(monitoringLogDTO.getCorpseID());
-
-            // Save the updated entity back to the database
-            monitoringLogDAO.save(monitoringLogEntity);
-        } else {
-            System.out.println("No entity found with ID: " + id);
+        Optional<MonitoringLogEntity>monitoringLogEntity =monitoringLogDAO.findById(id);
+        System.out.println(monitoringLogEntity.toString());//does not come to here the data which are sended by the controller
+        if (!monitoringLogEntity.isPresent()) {
+            System.out.println("monitoringLogentity is null");
+        }else {
+            MonitoringLogEntity update = monitoringMapping.tomonitoringLogEntity(monitoringLogDTO);
+            monitoringLogEntity.get().setLog_Date(update.getLog_Date());
+            monitoringLogEntity.get().setStaff(update.getStaff());
+            monitoringLogEntity.get().setObservation(update.getObservation());
+            monitoringLogEntity.get().setObserved_image(update.getObserved_image());
+            monitoringLogEntity.get().setField(update.getField());
+            monitoringLogEntity.get().setCorpse(update.getCorpse());
         }
     }
 

@@ -30,12 +30,4 @@ public class MonitoringLogEntity {
     private CorpseEntity corpse;
 
 
-    public void setCorpse(String corpseID) {
-    }
-
-    public void setField(String fieldID) {
-    }
-
-    public void setStaff(String staffID) {
-    }
 }
