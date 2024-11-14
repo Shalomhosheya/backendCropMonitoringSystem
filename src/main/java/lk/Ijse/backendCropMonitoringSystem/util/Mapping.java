@@ -71,4 +71,8 @@ public class Mapping {
     public List<EquipmentDetailsDto> asEquipDetailDtoList(List<EquipmentDetailsEntity> equipmentDetailsEntities) {
        return mapper.map(equipmentDetailsEntities,new TypeToken<List<EquipmentDetailsDto>>(){}.getType());
     }
+
+    public List<ReservationDTO> asReservationDTOList(List<ReservationEntity> reservationEntities) {
+        return mapper.map(reservationEntities, new TypeToken<List<ReservationDTO>>(){}.getType());
+    }
 }

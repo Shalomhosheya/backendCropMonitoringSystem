@@ -22,11 +22,11 @@ public class ReservationEntity implements SuperEntity {
 
   @ManyToOne()
   @JoinColumn(name = "staff",nullable = false)
-  private StaffEntity staffEntity;
+  private StaffEntity staff;
 
   @ManyToOne()
   @JoinColumn(name = "vehicle",nullable = false)
-  private VehicleEntity vehicleEntity;
+  private VehicleEntity Vehicle;
 
 
 

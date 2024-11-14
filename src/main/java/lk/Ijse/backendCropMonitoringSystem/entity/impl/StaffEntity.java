@@ -40,6 +40,6 @@ public class StaffEntity implements SuperEntity {
     @OneToMany(mappedBy = "staff")
     private List<MonitoringLogEntity>monitoringLogEntities;
 
-    @OneToMany(mappedBy = "staffEntity")
+    @OneToMany(mappedBy = "staff")
     private List<ReservationEntity>reservationEntities;
 }

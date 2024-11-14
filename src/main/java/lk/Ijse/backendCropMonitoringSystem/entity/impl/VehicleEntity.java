@@ -22,6 +22,6 @@ public class VehicleEntity implements SuperEntity {
     private String status;
     private String licenseNumberPlate;
 
-    @OneToMany(mappedBy = "vehicleEntity")
+    @OneToMany(mappedBy = "Vehicle")
     private List<ReservationEntity>reservationEntities;
 }
