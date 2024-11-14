@@ -11,6 +11,7 @@ import lk.Ijse.backendCropMonitoringSystem.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,10 @@ public class EquipmentDetailsServiceimpl implements EquipmentDetailsService {
         if (equipmentDetailsEntity == null) {
             System.out.println("equipmentDetailsentity is null");
         }
+    }
+
+    @Override
+    public List<EquipmentDetailsDto> getAllData() {
+        return equipment_detail_mapping.asEquipDetailDtoList(equipmentDetailsDAO.findAll());
     }
 }

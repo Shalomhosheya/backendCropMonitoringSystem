@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/equip_details")
 @CrossOrigin
@@ -41,4 +43,8 @@ public class EquipmentDetailsController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping()
+    public List<EquipmentDetailsDto>getAlldata(){
+        return equipmentDetailsService.getAllData();
+    }
 }
