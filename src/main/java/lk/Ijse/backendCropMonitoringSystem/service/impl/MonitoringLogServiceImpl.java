@@ -51,5 +51,15 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
         }
     }
 
+    @Override
+    public void deleteData(String id) {
+        Optional<MonitoringLogEntity>monitoringLogEntity=monitoringLogDAO.findById(id);
+        if (!monitoringLogEntity.isPresent()) {
+            System.out.println("monitoringLogEntity is empty");
+        }else {
+            monitoringLogDAO.deleteById(id);
+        }
+    }
+
 
 }

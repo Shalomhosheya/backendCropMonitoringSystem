@@ -11,4 +11,6 @@ public interface MonitoringLogService {
     List<MonitoringLogDTO> getAllData();
 
     void updateData(String id, MonitoringLogDTO monitoringLogDTO);
+
+    void deleteData(String id);
 }

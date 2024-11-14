@@ -93,4 +93,9 @@ public class MonitoringLogController {
             throw new RuntimeException(e);
         }
     }
+    @DeleteMapping(value = "{monitoringL_id}",produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    private ResponseEntity<Void>deleteData(@PathVariable("monitoringL_id")String id){
+        monitoringLogService.deleteData(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
