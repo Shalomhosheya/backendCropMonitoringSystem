@@ -24,7 +24,7 @@ public class EquipmentDetailsServiceimpl implements EquipmentDetailsService {
     private Mapping equipment_detail_mapping;
     @Override
     public void saveData(EquipmentDetailsDto equipmentDetailsDto) {
-        equipmentDetailsDto.setEquip_detailsID(AppUtil.generateEquipmentID());
+        equipmentDetailsDto.setEquip_detailsID(AppUtil.generateEquipmentDetails());
         EquipmentDetailsEntity equipmentDetailsEntity = equipmentDetailsDAO.save(equipment_detail_mapping.toEquipmentdetailEntity(equipmentDetailsDto));
         System.out.println("clicked");
         if (equipmentDetailsEntity == null) {
@@ -49,6 +49,16 @@ public class EquipmentDetailsServiceimpl implements EquipmentDetailsService {
             equipmentDetailsEntity.get().setResone(update.getResone());
             equipmentDetailsEntity.get().setField(update.getField());
             equipmentDetailsEntity.get().setDate(update.getDate());
+        }
+    }
+
+    @Override
+    public void deleteData(String id) {
+        Optional<EquipmentDetailsEntity>equipmentDetailsEntity =equipmentDetailsDAO.findById(id);
+        if (!equipmentDetailsEntity.isPresent()) {
+            System.out.println("equipmentDetailsEntity is null");
+        }else {
+            equipmentDetailsDAO.deleteById(id);
         }
     }
 

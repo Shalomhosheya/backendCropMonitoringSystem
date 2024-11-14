@@ -67,4 +67,10 @@ public class EquipmentDetailsController {
         equipmentDetailsService.updateData(id,equipmentDetailsDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @DeleteMapping(value = "{equip_detailsID}")
+    private ResponseEntity<Void>deleteData(@PathVariable("equip_detailsID")String id){
+
+        equipmentDetailsService.deleteData(id);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }
