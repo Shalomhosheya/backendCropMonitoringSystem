@@ -42,25 +42,11 @@ public class ReservationController {
  private List<ReservationDTO>getAllData(){
   return reservationService.getAllData();
  }
- @PutMapping(value = "/{reservationID}")
- private ResponseEntity<Void>updateData(
-         @RequestPart("staffId")String staffid,
-         @RequestPart("vehicleId")String vehicleId,
-         @RequestPart("date")String date,
-         @RequestPart("response")String response,
-         @RequestPart("reervationtype")String reervationtype
+ @PutMapping(value = "/{reservationID}",consumes = "application/json")
+ private ResponseEntity<Void>updateData(@PathVariable("reservationID")String id,@RequestBody ReservationDTO reservationDTO
  ){
-  String id = AppUtil.generateReservationID();
-  ReservationDTO reservationDTO = new ReservationDTO();
-  reservationDTO.setReservationID(id);
-  reservationDTO.setStaffId(staffid);
-  reservationDTO.setDate(date);
-  reservationDTO.setResponse(response);
-  reservationDTO.setVehicleId(vehicleId);
-  reservationDTO.setReervationtype(reervationtype);
-
   reservationService.updateData(id,reservationDTO);
-  return new ResponseEntity<>(HttpStatus.CREATED);
+  return new ResponseEntity<>(HttpStatus.NO_CONTENT);
  }
  @DeleteMapping(value = "/{reservationID}")
  private ResponseEntity<Void>deleteData(@PathVariable("reservationID")String id){

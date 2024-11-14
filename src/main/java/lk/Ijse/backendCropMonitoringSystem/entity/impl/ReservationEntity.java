@@ -29,5 +29,9 @@ public class ReservationEntity implements SuperEntity {
   private VehicleEntity Vehicle;
 
 
+    public void setStaff(String staffId) {
+    }
 
+   public void setVehicle(String vehicleId) {
+    }
 }

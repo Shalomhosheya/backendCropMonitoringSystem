@@ -42,13 +42,18 @@ public class ReservationServiceImpl implements ReservationService {
         if (!reservationEntity.isPresent()) {
             System.out.println("reservation is null");
         }else {
-            ReservationEntity update = reservationMapping.toReservationEntity(reservationDTO);
-            reservationEntity.get().setDate(update.getDate());
-            reservationEntity.get().setStaff(update.getStaff());
-            reservationEntity.get().setVehicle(update.getVehicle());
-            reservationEntity.get().setResponse(update.getResponse());
-            reservationEntity.get().setReervationtype(update.getReervationtype());
+//            ReservationEntity update = reservationMapping.toReservationEntity(reservationDTO);
+//            reservationEntity.get().setDate(update.getDate());
+//            reservationEntity.get().setStaff(update.getStaff());
+//            reservationEntity.get().setVehicle(update.getVehicle());
+//            reservationEntity.get().setResponse(update.getResponse());
+//            reservationEntity.get().setReervationtype(update.getReervationtype());
 
+            reservationEntity.get().setDate(reservationDTO.getDate());
+            reservationEntity.get().setStaff(reservationDTO.getStaffId());
+            reservationEntity.get().setVehicle(reservationDTO.getVehicleId());
+            reservationEntity.get().setResponse(reservationDTO.getResponse());
+            reservationEntity.get().setReervationtype(reservationDTO.getReervationtype());
         }
     }
 
