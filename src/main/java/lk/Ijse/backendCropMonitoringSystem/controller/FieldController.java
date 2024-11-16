@@ -18,7 +18,7 @@ import java.util.zip.DataFormatException;
 
 @RestController
 @RequestMapping("api/v1/field")
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin
 public class FieldController {
   @Autowired
   private FieldService fieldService;

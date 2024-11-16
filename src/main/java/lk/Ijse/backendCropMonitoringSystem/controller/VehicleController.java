@@ -73,6 +73,7 @@ public class VehicleController {
         vehicleDTO.setFuelType(fuelType);
         vehicleDTO.setRemarks(remarks);
         vehicleDTO.setStatus(status);
+        vehicleDTO.setLicenseNumberPlate(licenseNumberPlate);
 
         vehicleService.updateData(v_id, vehicleDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
