@@ -5,6 +5,7 @@ import lk.Ijse.backendCropMonitoringSystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,18 +21,13 @@ public class ReservationEntity implements SuperEntity {
   private String reervationtype;
 
 
+  @NotNull
   @ManyToOne()
   @JoinColumn(name = "staff",nullable = false)
   private StaffEntity staff;
 
-  @ManyToOne()
-  @JoinColumn(name = "vehicle",nullable = false)
-  private VehicleEntity Vehicle;
+  @ManyToOne
+  @JoinColumn(name = "vehicle", nullable = false)
+  private VehicleEntity vehicle;
 
-
-    public void setStaff(String staffId) {
-    }
-
-   public void setVehicle(String vehicleId) {
-    }
 }

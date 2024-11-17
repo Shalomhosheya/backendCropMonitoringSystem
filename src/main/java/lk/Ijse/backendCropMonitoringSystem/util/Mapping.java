@@ -40,6 +40,9 @@ public class Mapping {
     public EquipmentEntity toEquipEntity(EquipmentDTO equipmentDTO) {
         return mapper.map(equipmentDTO, EquipmentEntity.class);
     }
+    public ReservationEntity toreservationEntity(ReservationDTO reservationDTO) {
+        return mapper.map(reservationDTO,ReservationEntity.class);
+    }
     public List<FieldDTO> asFieldDTOList(List<FieldEntity> fieldEntities) {
       return mapper.map(fieldEntities,new TypeToken<List<FieldDTO>>(){}.getType());
      }
@@ -75,4 +78,6 @@ public class Mapping {
     public List<ReservationDTO> asReservationDTOList(List<ReservationEntity> reservationEntities) {
         return mapper.map(reservationEntities, new TypeToken<List<ReservationDTO>>(){}.getType());
     }
+
+
 }

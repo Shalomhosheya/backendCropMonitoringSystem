@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ReservationDTO implements ReservationStatus {
   private String reservationID;
-  private String staffId;
+  private String staffID;
   private String vehicleId;
   private String date;
   private String response;

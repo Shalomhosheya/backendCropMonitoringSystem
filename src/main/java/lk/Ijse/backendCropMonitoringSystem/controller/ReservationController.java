@@ -29,11 +29,14 @@ public class ReservationController {
   String id = AppUtil.generateReservationID();
   ReservationDTO reservationDTO = new ReservationDTO();
   reservationDTO.setReservationID(id);
-  reservationDTO.setStaffId(staffid);
+  reservationDTO.setStaffID(staffid);
   reservationDTO.setDate(date);
   reservationDTO.setResponse(response);
   reservationDTO.setVehicleId(vehicleId);
   reservationDTO.setReervationtype(reervationtype);
+
+//  System.out.println(reservationDTO);
+
   reservationService.saveData(reservationDTO);
   return new ResponseEntity<>(HttpStatus.CREATED);
  }
@@ -45,6 +48,7 @@ public class ReservationController {
  @PutMapping(value = "/{reservationID}",consumes = "application/json")
  private ResponseEntity<Void>updateData(@PathVariable("reservationID")String id,@RequestBody ReservationDTO reservationDTO
  ){
+  System.out.println(reservationDTO);
   reservationService.updateData(id,reservationDTO);
   return new ResponseEntity<>(HttpStatus.NO_CONTENT);
  }

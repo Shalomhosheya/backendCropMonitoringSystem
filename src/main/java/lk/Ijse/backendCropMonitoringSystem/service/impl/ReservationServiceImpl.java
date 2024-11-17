@@ -25,9 +25,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void saveData(ReservationDTO reservationDTO) {
          reservationDTO.setReservationID(AppUtil.generateReservationID());
-        ReservationEntity reservationEntity =reservationDAO.save(reservationMapping.toReservationEntity(reservationDTO));
+        System.out.println(reservationDTO);
+        ReservationEntity reservationEntity = reservationDAO.save(reservationMapping.toreservationEntity(reservationDTO));
         if (reservationEntity == null) {
-            System.out.println("reservationEntity is null");
+            System.out.println("RESERVATION ENTITY IS NULL");
         }
     }
 
@@ -38,22 +39,31 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void updateData(String id, ReservationDTO reservationDTO) {
-        Optional<ReservationEntity>reservationEntity =reservationDAO.findById(id);
+        Optional<ReservationEntity> reservationEntity =reservationDAO.findById(id);
         if (!reservationEntity.isPresent()) {
             System.out.println("reservation is null");
         }else {
-//            ReservationEntity update = reservationMapping.toReservationEntity(reservationDTO);
-//            reservationEntity.get().setDate(update.getDate());
+            System.out.println("awa");
+            ReservationEntity found = reservationEntity.get();
+            ReservationEntity update = reservationMapping.toReservationEntity(reservationDTO);
+            found.setStaff(update.getStaff());
+            found.setResponse(update.getResponse());
+            found.setVehicle(update.getVehicle());
+            found.setDate(update.getDate());
+            found.setReervationtype(update.getReervationtype());
+//
+//            reservationEntity.get();
 //            reservationEntity.get().setStaff(update.getStaff());
 //            reservationEntity.get().setVehicle(update.getVehicle());
 //            reservationEntity.get().setResponse(update.getResponse());
 //            reservationEntity.get().setReervationtype(update.getReervationtype());
 
-            reservationEntity.get().setDate(reservationDTO.getDate());
-            reservationEntity.get().setStaff(reservationDTO.getStaffId());
-            reservationEntity.get().setVehicle(reservationDTO.getVehicleId());
-            reservationEntity.get().setResponse(reservationDTO.getResponse());
-            reservationEntity.get().setReervationtype(reservationDTO.getReervationtype());
+//
+//            reservationEntity.get().setDate(reservationDTO.getDate());
+//            reservationEntity.get().setStaff(reservationDTO.getStaffID());
+//            reservationEntity.get().setVehicle(reservationDTO.getVehicleId());
+//            reservationEntity.get().setResponse(reservationDTO.getResponse());
+//            reservationEntity.get().setReervationtype(reservationDTO.getReervationtype());
         }
     }
 
