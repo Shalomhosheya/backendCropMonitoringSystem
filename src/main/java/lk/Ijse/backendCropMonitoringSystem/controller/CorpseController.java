@@ -53,7 +53,7 @@ public class CorpseController {
         }
 
     }
-    @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping( )
     public List<CorpseDTO> getAllCrops(){
         return corpseService.getAllCrops();
     }
