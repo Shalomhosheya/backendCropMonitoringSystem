@@ -43,13 +43,12 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
         if (!monitoringLogEntity.isPresent()) {
             System.out.println("monitoringLogentity is null");
         }else {
-            MonitoringLogEntity update = monitoringMapping.tomonitoringLogEntity(monitoringLogDTO);
-            monitoringLogEntity.get().setLog_Date(update.getLog_Date());
-            monitoringLogEntity.get().setStaff(update.getStaff());
-            monitoringLogEntity.get().setObservation(update.getObservation());
-            monitoringLogEntity.get().setObserved_image(update.getObserved_image());
-            monitoringLogEntity.get().setField(update.getField());
-            monitoringLogEntity.get().setCorpse(update.getCorpse());
+            monitoringLogEntity.get().setField(monitoringLogDTO.getFieldID());
+            monitoringLogEntity.get().setLog_Date(monitoringLogDTO.getLog_Date());
+            monitoringLogEntity.get().setObservation(monitoringLogDTO.getObservation());
+            monitoringLogEntity.get().setObserved_image(monitoringLogDTO.getObserved_image());
+            monitoringLogEntity.get().setCorpse(monitoringLogDTO.getCorpseID());
+            monitoringLogEntity.get().setStaff(monitoringLogDTO.getStaffID());
         }
     }
 

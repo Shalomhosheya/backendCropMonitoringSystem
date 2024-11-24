@@ -59,39 +59,10 @@ public class MonitoringLogController {
     private List<MonitoringLogDTO>getAllData(){
        return monitoringLogService.getAllData();
     }
-    @PutMapping(value = "{monitoringL_id}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    private ResponseEntity<Void>updateData(
-            @RequestPart("log_Date")String log_Date,
-            @RequestPart("observation")String observation,
-            @RequestPart("observed_image") MultipartFile observed_image,
-            @RequestPart("staffID")String staffID,
-            @RequestPart("fieldID")String fieldID,
-            @RequestPart("corpseID")String corpseID
-            ){
-        try {
-            String base64="";
-
-            byte [] bytesPicture1 = new byte[0];
-
-            bytesPicture1 = observed_image.getBytes();
-
-            base64 =AppUtil.monitoringPicToBase64(bytesPicture1);
-
-            String id= AppUtil.generateMonitoringID();
-            MonitoringLogDTO monitoringLogDTO =new MonitoringLogDTO();
-            monitoringLogDTO.setMonitoringL_id(id);
-            monitoringLogDTO.setLog_Date(log_Date);
-            monitoringLogDTO.setObservation(observation);
-            monitoringLogDTO.setObserved_image(base64);
-            monitoringLogDTO.setStaffID(staffID);
-            monitoringLogDTO.setFieldID(fieldID);
-            monitoringLogDTO.setCorpseID(corpseID);
-
-            monitoringLogService.updateData(id,monitoringLogDTO);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    @PutMapping(value = "{monitoringL_id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    private ResponseEntity<Void>updateData(@PathVariable("monitoringL_id") String monitoringL_id,@RequestBody MonitoringLogDTO monitoringLogDTO){
+        monitoringLogService.updateData(monitoringL_id,monitoringLogDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @DeleteMapping(value = "{monitoringL_id}",produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     private ResponseEntity<Void>deleteData(@PathVariable("monitoringL_id")String id){

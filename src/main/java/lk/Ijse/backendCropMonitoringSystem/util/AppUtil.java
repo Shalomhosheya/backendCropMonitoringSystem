@@ -38,4 +38,8 @@ public class AppUtil {
     public static String cropPic(byte[] bytesPicture1) {
         return Base64.getEncoder().encodeToString(bytesPicture1);
     }
+
+    public static String cropImage(byte[] bytesPicture1) {
+        return Base64.getEncoder().encodeToString(bytesPicture1);
+    }
 }

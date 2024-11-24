@@ -21,7 +21,7 @@ public class MonitoringLogEntity {
 
     @ManyToOne
     @JoinColumn(name = "staffID")
-    private StaffEntity staff;
+    private StaffEntity Staff;
     @ManyToOne
     @JoinColumn(name = "fieldID")
     private FieldEntity field;
@@ -30,4 +30,12 @@ public class MonitoringLogEntity {
     private CorpseEntity corpse;
 
 
+    public void setField(String fieldID) {
+    }
+
+    public void setCorpse(String corpseID) {
+    }
+
+    public void setStaff(String staffID) {
+    }
 }
