@@ -30,6 +30,6 @@ public class FieldEntity implements SuperEntity {
     @OneToMany(mappedBy = "field",cascade = CascadeType.ALL)
     private List<EquipmentDetailsEntity>equipmentDetailsEntities;
 
-    @OneToMany(mappedBy = "field",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "field1",cascade = CascadeType.ALL)
     private List<MonitoringLogEntity>monitoringLogEntities;
 }

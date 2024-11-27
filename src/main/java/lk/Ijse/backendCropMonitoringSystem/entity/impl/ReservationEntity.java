@@ -21,7 +21,6 @@ public class ReservationEntity implements SuperEntity {
   private String reervationtype;
 
 
-
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "staff",nullable = false)
   private StaffEntity staff;

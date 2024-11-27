@@ -24,7 +24,7 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
     @Override
     public void saveData(MonitoringLogDTO monitoringLogDTO) {
         monitoringLogDTO.setMonitoringL_id(AppUtil.generateMonitoringID());
-        System.out.println(monitoringMapping.tomonitoringLogEntity(monitoringLogDTO).toString());
+        System.out.println(monitoringLogDTO.getStaffID());
         MonitoringLogEntity monitoringLogEntity = monitoringLogDAO.save(monitoringMapping.tomonitoringLogEntity(monitoringLogDTO));
         if (monitoringLogEntity == null) {
             System.out.println("monitoringLogEntity");
@@ -43,12 +43,13 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
         if (!monitoringLogEntity.isPresent()) {
             System.out.println("monitoringLogentity is null");
         }else {
-            monitoringLogEntity.get().setField(monitoringLogDTO.getFieldID());
-            monitoringLogEntity.get().setLog_Date(monitoringLogDTO.getLog_Date());
-            monitoringLogEntity.get().setObservation(monitoringLogDTO.getObservation());
-            monitoringLogEntity.get().setObserved_image(monitoringLogDTO.getObserved_image());
-            monitoringLogEntity.get().setCorpse(monitoringLogDTO.getCorpseID());
-            monitoringLogEntity.get().setStaff(monitoringLogDTO.getStaffID());
+             MonitoringLogEntity update = monitoringMapping.tomonitoringLogEntity(monitoringLogDTO);
+            monitoringLogEntity.get().setField1(update.getField1() );
+            monitoringLogEntity.get().setLog_Date(update.getLog_Date());
+            monitoringLogEntity.get().setObservation(update.getObservation());
+            monitoringLogEntity.get().setObserved_image(update.getObserved_image());
+            monitoringLogEntity.get().setCrops(update.getCrops());
+            monitoringLogEntity.get().setStaff(update.getStaff());
         }
     }
 

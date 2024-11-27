@@ -31,6 +31,7 @@ public class MonitoringLogController {
     ){
         try {
 
+            System.out.println(staffID);
             String base64="";
 
             byte [] bytesPicture1 = new byte[0];
@@ -46,8 +47,6 @@ public class MonitoringLogController {
             monitoringLogDTO.setStaffID(staffID);
             monitoringLogDTO.setFieldID(fieldID);
             monitoringLogDTO.setCorpseID(corpseID);
-
-//            System.out.println(monitoringLogDTO.toString());
 
             monitoringLogService.saveData(monitoringLogDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
