@@ -6,6 +6,7 @@ import lk.Ijse.backendCropMonitoringSystem.dto.UserStatus;
 import lk.Ijse.backendCropMonitoringSystem.dto.impl.UserDTO;
 import lk.Ijse.backendCropMonitoringSystem.entity.impl.UserEntity;
 import lk.Ijse.backendCropMonitoringSystem.exception.DataPersistException;
+import lk.Ijse.backendCropMonitoringSystem.exception.UserNotFoundException;
 import lk.Ijse.backendCropMonitoringSystem.service.UserService;
 import lk.Ijse.backendCropMonitoringSystem.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,8 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public UserDetailsService userDetailsServices() {
-        return null;
+        return  username -> userDao.findByEmail(username)
+                .orElseThrow(()->new UserNotFoundException("User not found"));
     }
 
     @Override
