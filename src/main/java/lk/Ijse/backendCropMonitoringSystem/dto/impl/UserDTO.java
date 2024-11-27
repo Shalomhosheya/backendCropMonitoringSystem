@@ -17,6 +17,5 @@ public class UserDTO implements UserStatus {
     private String lastName;
     private String email;
     private String password;
-    private String profilePic;
     private Role role;
 }

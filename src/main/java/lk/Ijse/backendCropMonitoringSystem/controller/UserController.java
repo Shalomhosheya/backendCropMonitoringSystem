@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -25,24 +26,17 @@ public class UserController {
            @RequestPart ("firstName") String firstName,
            @RequestPart ("lastName") String lastName,
            @RequestPart ("email") String email,
-           @RequestPart ("password") String password,
-           @RequestPart ("profilePic") MultipartFile profilePic
+           @RequestPart ("password") String password
     ) {
-         // profilePic ----> Base64
-        String base64ProPic = "";
         try {
-            byte [] bytesProPic = profilePic.getBytes();
-            base64ProPic = AppUtil.profilePicToBase64(bytesProPic);
             //UserId generate
             String userId = AppUtil.generateUserId();
-            //Build the Object
             UserDTO buildUserDTO = new UserDTO();
             buildUserDTO.setUserId(userId);
             buildUserDTO.setFirstName(firstName);
             buildUserDTO.setLastName(lastName);
             buildUserDTO.setEmail(email);
             buildUserDTO.setPassword(password);
-            buildUserDTO.setProfilePic(base64ProPic);
             userService.saveUser(buildUserDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
@@ -75,17 +69,10 @@ public class UserController {
             @RequestPart ("lastName") String lastName,
             @RequestPart ("email") String email,
             @RequestPart ("password") String password,
-            @RequestPart ("profilePic") MultipartFile profilePic,
             @PathVariable ("userId") String userId
     ){
         // profilePic ----> Base64
-        String base64ProPic = "";
-        try {
-            byte [] bytesProPic = profilePic.getBytes();
-            base64ProPic = AppUtil.profilePicToBase64(bytesProPic);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
         //Build the Object
         UserDTO buildUserDTO = new UserDTO();
         buildUserDTO.setUserId(userId);
@@ -93,7 +80,6 @@ public class UserController {
         buildUserDTO.setLastName(lastName);
         buildUserDTO.setEmail(email);
         buildUserDTO.setPassword(password);
-        buildUserDTO.setProfilePic(base64ProPic);
         userService.updateUser(userId,buildUserDTO);
     }
 

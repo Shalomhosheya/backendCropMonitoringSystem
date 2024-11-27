@@ -1,8 +1,9 @@
 package lk.Ijse.backendCropMonitoringSystem.service;
 
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dto.impl.UserDTO;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.secure.JWT_authResponse;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.secure.SignIn;
+
+import lk.Ijse.backendCropMonitoringSystem.dto.impl.UserDTO;
+import lk.Ijse.backendCropMonitoringSystem.secure.JWT_authResponse;
+import lk.Ijse.backendCropMonitoringSystem.secure.SignIn;
 
 public interface AuthService {
     JWT_authResponse signIn(SignIn signIn);

@@ -1,7 +1,7 @@
 package lk.Ijse.backendCropMonitoringSystem.service;
 
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dto.UserStatus;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dto.impl.UserDTO;
+import lk.Ijse.backendCropMonitoringSystem.dto.UserStatus;
+import lk.Ijse.backendCropMonitoringSystem.dto.impl.UserDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

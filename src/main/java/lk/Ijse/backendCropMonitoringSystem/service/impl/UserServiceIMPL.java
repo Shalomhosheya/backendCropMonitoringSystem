@@ -1,15 +1,13 @@
 package lk.Ijse.backendCropMonitoringSystem.service.impl;
 
 import jakarta.transaction.Transactional;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.customStatusCodes.SelectedUserAndNoteErrorStatus;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dao.UserDao;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dto.UserStatus;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.dto.impl.UserDTO;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.entity.impl.UserEntity;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.exception.DataPersistException;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.exception.UserNotFoundException;
-import lk.Ijse.GDSE.ADD67.Notecollector_V2.util.Mapping;
+import lk.Ijse.backendCropMonitoringSystem.dao.UserDao;
+import lk.Ijse.backendCropMonitoringSystem.dto.UserStatus;
+import lk.Ijse.backendCropMonitoringSystem.dto.impl.UserDTO;
+import lk.Ijse.backendCropMonitoringSystem.entity.impl.UserEntity;
+import lk.Ijse.backendCropMonitoringSystem.exception.DataPersistException;
 import lk.Ijse.backendCropMonitoringSystem.service.UserService;
+import lk.Ijse.backendCropMonitoringSystem.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -23,11 +21,15 @@ public class UserServiceIMPL implements UserService {
     @Autowired
     private UserDao userDao;
     @Autowired
-    private Mapping mapping;
+    private Mapping userMapping;
+
+
+
+
     @Override
     public void saveUser(UserDTO userDTO) {
         UserEntity savedUser =
-                userDao.save(mapping.toUserEntity(userDTO));
+                userDao.save(userMapping.toUserEntity(userDTO));
         if (savedUser == null) {
             throw new DataPersistException("User not saved");
         }
@@ -35,27 +37,27 @@ public class UserServiceIMPL implements UserService {
     @Override
     public List<UserDTO> getAllUsers() {
         List<UserEntity> allUsers = userDao.findAll();
-        return mapping.asUserDTOList(allUsers);
+        return userMapping.asUserDTOList(allUsers);
     }
 
     @Override
     public UserStatus getUser(String userId) {
-        if(userDao.existsById(userId)){
-            UserEntity selectedUser = userDao.getReferenceById(userId);
-            return mapping.toUserDTO(selectedUser);
-        }else {
-            return new SelectedUserAndNoteErrorStatus(2, "User with id " + userId + " not found");
-        }
+          UserEntity selectedUser = userDao.getReferenceById(userId);
+            return userMapping.toUserDTO(selectedUser);
+
     }
 
     @Override
     public void deleteUser(String userId) {
         Optional<UserEntity> existedUser = userDao.findById(userId);
-        if(!existedUser.isPresent()){
-            throw new UserNotFoundException("User with id " + userId + " not found");
-        }else {
+
             userDao.deleteById(userId);
-        }
+
+    }
+
+    @Override
+    public UserDetailsService userDetailsServices() {
+        return null;
     }
 
     @Override
@@ -66,13 +68,12 @@ public class UserServiceIMPL implements UserService {
             tmpUser.get().setLastName(userDTO.getLastName());
             tmpUser.get().setEmail(userDTO.getEmail());
             tmpUser.get().setPassword(userDTO.getPassword());
-            tmpUser.get().setProfilePic(userDTO.getProfilePic());
         }
     }
 
-    @Override
+    /*@Override
     public UserDetailsService userDetailsServices() {
         return  username -> userDao.findByEmail(username)
                 .orElseThrow(()->new UserNotFoundException("User not found"));
-    }
+    }*/
 }
