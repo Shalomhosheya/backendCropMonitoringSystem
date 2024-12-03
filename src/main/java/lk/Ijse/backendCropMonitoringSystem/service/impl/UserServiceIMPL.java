@@ -25,8 +25,6 @@ public class UserServiceIMPL implements UserService {
     private Mapping userMapping;
 
 
-
-
     @Override
     public void saveUser(UserDTO userDTO) {
         UserEntity savedUser =
@@ -73,9 +71,5 @@ public class UserServiceIMPL implements UserService {
         }
     }
 
-    /*@Override
-    public UserDetailsService userDetailsServices() {
-        return  username -> userDao.findByEmail(username)
-                .orElseThrow(()->new UserNotFoundException("User not found"));
-    }*/
+
 }
