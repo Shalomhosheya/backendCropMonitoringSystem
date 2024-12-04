@@ -64,7 +64,7 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://127.0.0.1:5500")); // Allow specific origin
+        config.setAllowedOrigins(List.of("http://127.0.0.1:5500"));// Allow specific origin
         config.setAllowedHeaders(List.of("*")); // Allow all headers
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow all HTTP methods
         source.registerCorsConfiguration("/**", config);

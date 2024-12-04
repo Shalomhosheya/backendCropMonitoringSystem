@@ -11,4 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class JWT_authResponse {
     private String token;
+    private String email;
+
 }
